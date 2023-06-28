@@ -84,7 +84,11 @@ public class Perintah {
     }
     public void buatSegitiga(int ukuran){
         // TODO: Lengkapi isi method ini agar kura-kura bisa membuat segitiga sama sisi
-
+        kurakuraku.maju(ukuran);
+        kurakuraku.rotasi(-120);
+        kurakuraku.maju(ukuran);
+        kurakuraku.rotasi(-120);
+        kurakuraku.maju(ukuran);        
     }        
     
     public void buatPohon(){        
