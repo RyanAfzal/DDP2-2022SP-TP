@@ -56,6 +56,10 @@ public class Perintah {
             kurakuraku.maju(Integer.parseInt(in[1]));
         else if (in[0].equalsIgnoreCase("mundur"))
                 kurakuraku.mundur(Integer.parseInt(in[1]));
+        else if (in[0].equalsIgnoreCase("hadap") && in [1].equalsIgnoreCase("kanan")){
+                kurakuraku.rotasi(90);}
+        else if (in[0].equalsIgnoreCase("hadap") && in [1].equalsIgnoreCase("kiri")){
+                kurakuraku.rotasi(-90);}
         else if (in[0].equalsIgnoreCase("rotasi"))
                 kurakuraku.rotasi(Integer.parseInt(in[1]));
         else if (in[0].equalsIgnoreCase("kotak"))
