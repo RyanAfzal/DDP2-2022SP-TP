@@ -95,7 +95,7 @@ public class Perintah {
                     int panjang = Integer.parseInt(in[1]);
                     int lebar = Integer.parseInt(in[2]);
 
-                    if (panjang > lebar)
+                    if (panjang >= lebar)
                         buatPersegi(panjang, lebar);
 
                     else{
@@ -140,6 +140,17 @@ public class Perintah {
         
     }
 
+    public void buatSegitigaSikuSiku(int panjangAlas, int tinggi){
+        double miring = Math.sqrt(Math.pow(2,panjangAlas)+Math.pow(2,tinggi));
+        double sudut = Math.asin(panjangAlas / miring * Math.sin(90));
+
+        kurakuraku.maju(panjangAlas);
+        kurakuraku.rotasi(-90);
+        kurakuraku.maju(tinggi);
+        kurakuraku.rotasi(sudut);
+        kurakuraku.maju(miring);
+
+    }
     public void buatPohon(){        
         kurakuraku.setJejak(false);
         kurakuraku.reset();
