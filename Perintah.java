@@ -161,13 +161,15 @@ public class Perintah {
     }
 
     public void buatSegitigaSikuSiku(int panjangAlas, int tinggi){
-        double miring = Math.sqrt(Math.pow(2,panjangAlas)+Math.pow(2,tinggi));
-        double sudut = Math.asin(panjangAlas / miring * Math.sin(90));
+        double miring = Math.sqrt(Math.pow(panjangAlas,2)+Math.pow(tinggi,2));
+        double sudutBerhadapanAlasRad = Math.asin(panjangAlas / miring * Math.sin(Math.PI/2));
+        double sudutBerhadapanAlasDerajat = sudutBerhadapanAlasRad * 180/Math.PI;
+        double derajatRotasi = 90 + (90-sudutBerhadapanAlasDerajat);
 
         kurakuraku.maju(panjangAlas);
         kurakuraku.rotasi(-90);
         kurakuraku.maju(tinggi);
-        kurakuraku.rotasi(sudut);
+        kurakuraku.rotasi(-derajatRotasi);
         kurakuraku.maju(miring);
     }
 
