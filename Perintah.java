@@ -85,11 +85,16 @@ public class Perintah {
                     canvas.repaint();
                     return "Perintah kekurangan argumen";
             }
+            else if (in[0].equalsIgnoreCase("segitiga") && in[1].equalsIgnoreCase("siku-siku")){
+                canvas.repaint();
+                return "Perintah kekurangan argumen";
+            }
             else{
                     canvas.repaint(); 
                     return "Perintah tidak dipahami.";
             }
         }
+
         else if (in.length == 3){
             if (in[0].equalsIgnoreCase("persegi")){
                     int panjang = Integer.parseInt(in[1]);
@@ -97,11 +102,15 @@ public class Perintah {
 
                     if (panjang >= lebar)
                         buatPersegi(panjang, lebar);
-
                     else{
                         canvas.repaint();
                         return "Ukuran memiliki kesalahan";
-                    }
+                        }
+            }
+
+            else if (in[0].equalsIgnoreCase("segitiga") && in[1].equalsIgnoreCase("siku-siku")){
+                    canvas.repaint();
+                    return "Perintah kekurangan argumen";
             }
 
             else{
@@ -109,7 +118,18 @@ public class Perintah {
                 return "Perintah tidak dipahami.";
             }
         }
-        
+
+        else if (in.length == 4){
+            if (in[0].equalsIgnoreCase("segitiga") && in[1].equalsIgnoreCase("siku-siku")){
+                buatSegitigaSikuSiku(Integer.parseInt(in[2]),Integer.parseInt(in[3]));
+            }
+
+            else{
+                canvas.repaint(); 
+                return "Perintah tidak dipahami.";
+            }
+        }
+
         canvas.repaint();    
         return "Perintah sudah dilaksanakan.";
     }
@@ -149,8 +169,8 @@ public class Perintah {
         kurakuraku.maju(tinggi);
         kurakuraku.rotasi(sudut);
         kurakuraku.maju(miring);
-
     }
+
     public void buatPohon(){        
         kurakuraku.setJejak(false);
         kurakuraku.reset();
