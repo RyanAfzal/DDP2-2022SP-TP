@@ -82,7 +82,12 @@ public class Kurakura {
         arah += Math.toRadians(d);
         matRotasi.setToRotation(arah,img.getWidth(null)/2,img.getHeight(null)/2); // rotasi dihitung dari pusat image.              
     }
-    
+
+    public void rotasiDerajat(double d){        
+        arah += Math.toDegrees(d);
+        matRotasi.setToRotation(arah,img.getWidth(null)/2,img.getHeight(null)/2); // rotasi dihitung dari pusat image.              
+    }
+
     public void maju(double jarak){
         double dx,dy;
         dx = jarak * Math.cos(arah);
