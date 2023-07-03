@@ -61,135 +61,141 @@ public class Perintah {
         if (in[0].equalsIgnoreCase("loop")){
             if (isInteger(in[1]) == true){
                 for (int k = 0 ; k < Integer.parseInt(in[1]) ; k++){
-                    for (int i = 2 ; i < in.length ; i++){
-                        if (in[i].equalsIgnoreCase("reset")){
-                            kurakuraku.reset();
-                        }
-
-                        else if (in[i].equalsIgnoreCase("selesai")){
-                            System.exit(0);
-                        }
-
-                        else if (in[i].equalsIgnoreCase("pohon")){
-                            buatPohon();
-                        }
-
-                        else if (in[i].equalsIgnoreCase("maju")){
-                            if (isInteger(in[i+1]) == true){
-                                kurakuraku.maju(Integer.parseInt(in[i+1]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("mundur")){
-                            if (isInteger(in[i+1]) == true){
-                                kurakuraku.mundur(Integer.parseInt(in[i+1]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("rotasi") && in[i+1].equalsIgnoreCase("derajat") == false){
-                            if (isInteger(in[i+1]) == true){
-                                kurakuraku.rotasi(Integer.parseInt(in[i+1]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("rotasi") && in[i+1].equalsIgnoreCase("derajat")){
-                            if (isInteger(in[i+2]) == true){
-                                kurakuraku.rotasiDerajat(Integer.parseInt(in[i+2]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("kotak")){
-                            if (isInteger(in[i+1]) == true){
-                                buatKotak(Integer.parseInt(in[i+1]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("segitiga") && in[i+1].equalsIgnoreCase("siku-siku") == false){
-                            if (isInteger(in[i+1]) == true){
-                                buatSegitiga(Integer.parseInt(in[i+1]));
-                            }
-                            else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("jejak")){
-                            try{
-                                kurakuraku.setJejak(Boolean.parseBoolean(in[i+1]));
+                    try{
+                        for (int i = 2 ; i < in.length ; i++){
+                            if (in[i].equalsIgnoreCase("reset")){
+                                kurakuraku.reset();
                             }
 
-                            catch (Exception e){
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                        }
-
-                        else if (in[i].equalsIgnoreCase("pindah")){
-                            try{
-                                kurakuraku.setPosition(new Dimension(Integer.parseInt(in[i+1]),Integer.parseInt(in[i+2])));
+                            else if (in[i].equalsIgnoreCase("selesai")){
+                                System.exit(0);
                             }
 
-                            catch (Exception e){
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
+                            else if (in[i].equalsIgnoreCase("pohon")){
+                                buatPohon();
                             }
-                        }
 
-                        else if (in[i].equalsIgnoreCase("persegi")){
-                            if (isInteger(in[i+1]) == true && isInteger(in[i+2]) == true){
-                                int panjang = Integer.parseInt(in[i+1]);
-                                int lebar = Integer.parseInt(in[i+2]);
-
-                                if (panjang >= lebar){
-                                    for (int j = 0 ; j < Integer.parseInt(in[1]) ; j++){
-                                        buatPersegi(panjang, lebar);
-                                    }
+                            else if (in[i].equalsIgnoreCase("maju")){
+                                if (isInteger(in[i+1]) == true){
+                                    kurakuraku.maju(Integer.parseInt(in[i+1]));
                                 }
                                 else{
                                     canvas.repaint();
-                                    return "Ukuran memiliki kesalahan";
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("mundur")){
+                                if (isInteger(in[i+1]) == true){
+                                    kurakuraku.mundur(Integer.parseInt(in[i+1]));
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("rotasi") && in[i+1].equalsIgnoreCase("derajat") == false){
+                                if (isInteger(in[i+1]) == true){
+                                    kurakuraku.rotasi(Integer.parseInt(in[i+1]));
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("rotasi") && in[i+1].equalsIgnoreCase("derajat")){
+                                if (isInteger(in[i+2]) == true){
+                                    kurakuraku.rotasiDerajat(Integer.parseInt(in[i+2]));
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("kotak")){
+                                if (isInteger(in[i+1]) == true){
+                                    buatKotak(Integer.parseInt(in[i+1]));
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("segitiga") && in[i+1].equalsIgnoreCase("siku-siku") == false){
+                                if (isInteger(in[i+1]) == true){
+                                    buatSegitiga(Integer.parseInt(in[i+1]));
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("jejak")){
+                                try{
+                                    kurakuraku.setJejak(Boolean.parseBoolean(in[i+1]));
+                                }
+
+                                catch (Exception e){
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("pindah")){
+                                try{
+                                    kurakuraku.setPosition(new Dimension(Integer.parseInt(in[i+1]),Integer.parseInt(in[i+2])));
+                                }
+
+                                catch (Exception e){
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("persegi")){
+                                if (isInteger(in[i+1]) == true && isInteger(in[i+2]) == true){
+                                    int panjang = Integer.parseInt(in[i+1]);
+                                    int lebar = Integer.parseInt(in[i+2]);
+
+                                    if (panjang >= lebar){
+                                        for (int j = 0 ; j < Integer.parseInt(in[1]) ; j++){
+                                            buatPersegi(panjang, lebar);
+                                        }
                                     }
+                                    else{
+                                        canvas.repaint();
+                                        return "Ukuran memiliki kesalahan";
+                                        }
+                                }
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                                
                             }
+
+                            else if (in[i].equalsIgnoreCase("segitiga") && in[i+1].equalsIgnoreCase("siku-siku")){
+                                if (isInteger(in[i+2]) == true && isInteger(in[i+3]) == true){
+                                    buatSegitigaSikuSiku(Integer.parseInt(in[i+2]),Integer.parseInt(in[i+3]));
+                                }
+                            }
+
                             else{
-                                canvas.repaint();
-                                return "Perintah kekurangan argumen";
-                            }
-                            
-                        }
-
-                        else if (in[i].equalsIgnoreCase("segitiga") && in[i+1].equalsIgnoreCase("siku-siku")){
-                            if (isInteger(in[i+2]) == true && isInteger(in[i+3]) == true){
-                                buatSegitigaSikuSiku(Integer.parseInt(in[i+2]),Integer.parseInt(in[i+3]));
+                                if (isInteger(in[i]) == false){
+                                    canvas.repaint();
+                                    return "Perintah tidak dipahami";
+                                }
                             }
                         }
-
-                        else{
-                            if (isInteger(in[i]) == false){
-                                canvas.repaint();
-                                return "Perintah tidak dipahami";
-                            }
-                        }
+                    }
+                    catch (Exception e){
+                        canvas.repaint();
+                        return "Perintah kekurangan argumen";
                     }
                 }
             }
