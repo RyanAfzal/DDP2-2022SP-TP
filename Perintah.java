@@ -44,7 +44,13 @@ public class Perintah {
         this.canvas = canvas;
     }
 
-    // Menambahkan method untuk memerika apakah string berupa numeric atau tidak
+    /**
+     * Method ini ditambahkan untuk memeriksa apakah string numeric atau tidak
+     * dengan cara apa bila string tidak bisa dikonversi maka bukan numeric, jika bisa dikonversi
+     * maka string tersebut numeric
+     * @param s adalah parameter berupa string
+     * @return mengembalikan value berupa boolean true atau false
+     */
     public static boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
@@ -54,6 +60,11 @@ public class Perintah {
         }
     }
 
+    /**
+     * Method ini untuk memberi tahu komputer apa yang harus dilakukan oleh turtle
+     * @param inputPerintah parameter input dari user berupa string untuk perintah  yang harus dijalankan turtle
+     * @return akan mengembalikan value berupa pesan jika input tidak sesuai dengan yang dibutuhkan suatu perintah
+     */
     // Dapatkan anda membuat method ini lebih baik dan lebih mudah ditambahkan
     // atau di ubah? 
     public String lakukan(String inputPerintah){
@@ -163,9 +174,7 @@ public class Perintah {
                                     int lebar = Integer.parseInt(in[i+2]);
 
                                     if (panjang >= lebar){
-                                        for (int j = 0 ; j < Integer.parseInt(in[1]) ; j++){
-                                            buatPersegi(panjang, lebar);
-                                        }
+                                        buatPersegi(panjang, lebar);
                                     }
                                     else{
                                         canvas.repaint();
@@ -303,12 +312,21 @@ public class Perintah {
         return "Perintah sudah dilaksanakan.";
     }
     
+    /**
+     * Method ini untuk kura-kura menggambar kotak
+     * @param ukuran parameter ukuran kotak yang diinginkan
+     */
     public void buatKotak(int ukuran ){        
         for (int i=0;i<4;i++){
             kurakuraku.maju(ukuran);
             kurakuraku.rotasi(90);
         }
     }
+
+    /**
+     * Method ini untuk kura-kura menggambar segitiga
+     * @param ukuran parameter ukuran segitiga yang diinginkan
+     */
     public void buatSegitiga(int ukuran){
         // TODO: Lengkapi isi method ini agar kura-kura bisa membuat segitiga sama sisi
         kurakuraku.maju(ukuran);
@@ -318,6 +336,11 @@ public class Perintah {
         kurakuraku.maju(ukuran);        
     }        
     
+    /**
+     * Method ini untuk kura-kura menggambar persegi (Lebih mengarah ke persegi panjang)
+     * @param panjang   parameter ukuran panjang persegi yang diinginkan
+     * @param lebar     parameter ukuran lebar persegi yang diinginkan
+     */
     public void buatPersegi(int panjang, int lebar){
         kurakuraku.maju(panjang);
         kurakuraku.rotasi(-90);
@@ -329,10 +352,15 @@ public class Perintah {
         
     }
 
+    /**
+     * Method ini untuk kura-kura menggambar segitiga siku-siku
+     * @param panjangAlas parameter ukuran alas segitiga siku-siku yang diinginkan
+     * @param tinggi      parameter ukuran tinggi segitiga siku-siku yang diinginkan
+     */
     public void buatSegitigaSikuSiku(int panjangAlas, int tinggi){
         double miring = Math.sqrt(Math.pow(panjangAlas,2)+Math.pow(tinggi,2));
         double sudutBerhadapanAlasRad = Math.asin(panjangAlas / miring * Math.sin(Math.PI/2));
-        double sudutBerhadapanAlasDerajat = sudutBerhadapanAlasRad * 180/Math.PI;
+        double sudutBerhadapanAlasDerajat = sudutBerhadapanAlasRad * 180/Math.PI;               //rumus ini juga bisa diganti dengan Math.toDegrees()
         double derajatRotasi = 90 + (90-sudutBerhadapanAlasDerajat);
 
         kurakuraku.maju(panjangAlas);
@@ -342,6 +370,10 @@ public class Perintah {
         kurakuraku.maju(miring);
     }
 
+    /**
+     * Method ini untuk kura-kura menggambar pohon
+     * dengan modifikasi diujungnya ditambahkan persegi pada method yang private
+     */
     public void buatPohon(){        
         kurakuraku.setJejak(false);
         kurakuraku.reset();

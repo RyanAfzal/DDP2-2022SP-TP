@@ -77,17 +77,38 @@ public class Kurakura {
         y = height/2-20;   
         matTrans.setToTranslation(x, y);
     }
-    
+
+    /**
+     * Method ini untuk membuat kura-kura rotasi sebesar sudut yang diinginkan user
+     * 
+     * Method ini menganggap input dari user adalah sudut dalam derajat kemudian merotasikan
+     * kura-kura dengan sudut dalam satuan radian
+     * 
+     * @param d parameter besar sudut rotasi
+     */
     public void rotasi(double d){        
         arah += Math.toRadians(d);
         matRotasi.setToRotation(arah,img.getWidth(null)/2,img.getHeight(null)/2); // rotasi dihitung dari pusat image.              
     }
 
+    /**
+     * Method ini untuk membuat kura-kura rotasi sebesar sudut yang diinginkan user
+     * 
+     * Method ini menganggap input dari user adalah sudut dalam radian kemudian merotasikan
+     * kura-kura dengan sudut dalam satuan derajat
+     * 
+     * @param d parameter besar sudut rotasi
+     */
     public void rotasiDerajat(double d){        
         arah += Math.toDegrees(d);
         matRotasi.setToRotation(arah,img.getWidth(null)/2,img.getHeight(null)/2); // rotasi dihitung dari pusat image.              
     }
 
+    /**
+     * Method ini untuk membuat kura-kura maju sejauh jarak yang diinginkan sambil membuat garis
+     * dari posisi awal ke posisi akhir
+     * @param jarak parameter ukuran jarak jauhnya kura-kura maju
+     */
     public void maju(double jarak){
         double dx,dy;
         dx = jarak * Math.cos(arah);
@@ -103,6 +124,11 @@ public class Kurakura {
         matTrans.setToTranslation(x,y);
     }
     
+    /**
+     * Method ini untuk membuat kura-kura mundur sejauh jarak yang diinginkan sambil membuat garis
+     * dari posisi awal ke posisi akhir
+     * @param jarak parameter ukuran jarak jauhnya kura-kura mundur
+     */
     public void mundur(double jarak){
         // TODO: lengkapi method ini untuk tugas 1
         double dx,dy;
