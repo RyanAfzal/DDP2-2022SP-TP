@@ -369,6 +369,7 @@ public class Perintah {
                 kurakuraku.rotasi(sudut);  
             }     
         }
+        buatKotak(4);
         kurakuraku.reset();
     }
 }
