@@ -65,6 +65,12 @@ public class Kurakura {
         reset();
     }
     
+    /**
+     * Method ini berguna untuk mengatur ukuran objek kura-kura
+     * @param w parameter untuk lebar kura-kura
+     * @param h parameter untuk tinggi kura-kura
+     * BufferedImage digunakan untuk menggambar jejak kura-kura
+     */
     public void setSize(int w, int h){        
         width = w;
         height = h;        
@@ -150,7 +156,7 @@ public class Kurakura {
      * jejak dilayar atau tidak bila bernilai {@code True}
      * maka akan terlihat jejak garis.
      * 
-     * @param b sebuah boolean yang menentukan 
+     * @param v sebuah boolean yang menentukan 
      *          akan memberikan jejak atau tidak  
      * 
      */
@@ -190,7 +196,7 @@ public class Kurakura {
      * Mutator method: 
      * men-set posisi kurakura 
      * 
-     * @param informasi posisi kurakura dalam object {@code Dimension}
+     * @param pos posisi kurakura dalam object {@code Dimension}
      *  
      */
     public void setPosition(Dimension pos){
@@ -199,10 +205,18 @@ public class Kurakura {
         matTrans.setToTranslation(x, y);
     }
     
+    /**
+     * Method ini untuk mendapatkan nilai arah atau sudut rotasi saat ini dari objek kura-kura
+     * @return  mengembalikan nilai arah atau sudut rotasi saat ini
+     */
     public double getArah(){
         return arah;
     }
     
+    /**
+     * Method ini untuk mengatur arah atau sudut rotasi dari kura-kura
+     * @param a parameter sudut rotasi yang diinginkan user
+     */
     public void setArah(double a){
         arah =a;
         matRotasi.setToRotation(arah,img.getWidth(null)/2,img.getHeight(null)/2); // rotasi dihitung dari pusat image.              
