@@ -250,6 +250,8 @@ public class Perintah {
                     kurakuraku.setJejak(Boolean.parseBoolean(in[1]));
             else if (in[0].equalsIgnoreCase("pindah"))
                     kurakuraku.setPosition(new Dimension(Integer.parseInt(in[1]),Integer.parseInt(in[2])));
+            else if (in[0].equalsIgnoreCase("boxes"))
+                    boxes(Integer.parseInt(in[1]));
             else if (in[0].equalsIgnoreCase("persegi")){
                     canvas.repaint();
                     return "Perintah kekurangan argumen";
@@ -370,6 +372,22 @@ public class Perintah {
         kurakuraku.maju(miring);
     }
 
+    /**
+     * Method ini untuk kura-kura menggambar nested boxes
+     * @param ukuran parameter ukuran sisi kotak
+     */
+    public void boxes(int ukuran){
+        if (ukuran >= 0){
+        buatKotak(ukuran);
+        kurakuraku.setJejak(false);
+        kurakuraku.maju(10);
+        kurakuraku.rotasi(90);
+        kurakuraku.maju(10);
+        kurakuraku.rotasi(-90);
+        kurakuraku.setJejak(true);
+        boxes(ukuran-20);
+        }
+    }
     /**
      * Method ini untuk kura-kura menggambar pohon
      * dengan modifikasi diujungnya ditambahkan persegi pada method yang private
