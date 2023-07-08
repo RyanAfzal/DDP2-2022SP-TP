@@ -248,8 +248,6 @@ public class Perintah {
                     buatSegitiga(Integer.parseInt(in[1]));        
             else if (in[0].equalsIgnoreCase("jejak"))
                     kurakuraku.setJejak(Boolean.parseBoolean(in[1]));
-            else if (in[0].equalsIgnoreCase("pindah"))
-                    kurakuraku.setPosition(new Dimension(Integer.parseInt(in[1]),Integer.parseInt(in[2])));
             else if (in[0].equalsIgnoreCase("boxes"))
                     boxes(Integer.parseInt(in[1]));
             else if (in[0].equalsIgnoreCase("sierpinski"))
@@ -289,6 +287,9 @@ public class Perintah {
 
             else if (in[0].equalsIgnoreCase("rotasi") && in[1].equalsIgnoreCase("derajat"))
                     kurakuraku.rotasiDerajat(Integer.parseInt(in[2]));
+            
+            else if (in[0].equalsIgnoreCase("pindah"))
+                    kurakuraku.setPosition(new Dimension(Integer.parseInt(in[1]),Integer.parseInt(in[2])));
 
             else if (in[0].equalsIgnoreCase("segitiga") && in[1].equalsIgnoreCase("siku-siku")){
                     canvas.repaint();
@@ -393,15 +394,16 @@ public class Perintah {
     
     public void sierpinski(int ukuran){
         buatSegitiga(ukuran);
+        kurakuraku.rotasi(-120);
         sierpinskiRekursif(ukuran/2);
     }
 
     public void sierpinskiRekursif (int ukuran){
-        if (ukuran > 2){
+        if (ukuran > 3){
             kurakuraku.maju(ukuran);
             kurakuraku.rotasi(-60);
             buatSegitiga(ukuran);
-            kurakuraku.rotasi(60);
+            kurakuraku.rotasi(-60);
             sierpinskiRekursif(ukuran/2);
         }
     }
