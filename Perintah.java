@@ -252,6 +252,8 @@ public class Perintah {
                     kurakuraku.setPosition(new Dimension(Integer.parseInt(in[1]),Integer.parseInt(in[2])));
             else if (in[0].equalsIgnoreCase("boxes"))
                     boxes(Integer.parseInt(in[1]));
+            else if (in[0].equalsIgnoreCase("sierpinski"))
+                    sierpinski(Integer.parseInt(in[1]));
             else if (in[0].equalsIgnoreCase("persegi")){
                     canvas.repaint();
                     return "Perintah kekurangan argumen";
@@ -388,6 +390,22 @@ public class Perintah {
         boxes(ukuran-20);
         }
     }
+    
+    public void sierpinski(int ukuran){
+        buatSegitiga(ukuran);
+        sierpinskiRekursif(ukuran/2);
+    }
+
+    public void sierpinskiRekursif (int ukuran){
+        if (ukuran > 2){
+            kurakuraku.maju(ukuran);
+            kurakuraku.rotasi(-60);
+            buatSegitiga(ukuran);
+            kurakuraku.rotasi(60);
+            sierpinskiRekursif(ukuran/2);
+        }
+    }
+
     /**
      * Method ini untuk kura-kura menggambar pohon
      * dengan modifikasi diujungnya ditambahkan persegi pada method yang private
