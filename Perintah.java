@@ -399,10 +399,18 @@ public class Perintah {
     }
 
     public void sierpinskiRekursif (int ukuran){
-        if (ukuran > 3){
+        if (ukuran > 2){
             kurakuraku.maju(ukuran);
+            Dimension posisiAwal = kurakuraku.getPosition();
             kurakuraku.rotasi(-60);
             buatSegitiga(ukuran);
+            kurakuraku.rotasi(-60);
+            kurakuraku.setPosition(posisiAwal);
+            kurakuraku.rotasi(-180);
+            kurakuraku.maju(ukuran/2);
+            kurakuraku.rotasi(120);
+            buatSegitiga(ukuran/2);
+            kurakuraku.setPosition(posisiAwal);
             kurakuraku.rotasi(-60);
             sierpinskiRekursif(ukuran/2);
         }
