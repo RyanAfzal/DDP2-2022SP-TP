@@ -146,6 +146,39 @@ public class Perintah {
                                 }
                             }
 
+                            else if (in[i].equalsIgnoreCase("boxes")){
+                                if (isInteger(in[i+1]) == true){
+                                boxes(Integer.parseInt(in[i+1]));
+                                }
+
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("sierpinski")){
+                                if (isInteger(in[i+1]) == true){
+                                sierpinski(Integer.parseInt(in[i+1]));
+                                }
+
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
+                            else if (in[i].equalsIgnoreCase("daun")){
+                                if (isInteger(in[i+1]) == true){
+                                DaunMenjari(Integer.parseInt(in[i+1]));
+                                }
+
+                                else{
+                                    canvas.repaint();
+                                    return "Perintah kekurangan argumen";
+                                }
+                            }
+
                             else if (in[i].equalsIgnoreCase("jejak")){
                                 try{
                                     kurakuraku.setJejak(Boolean.parseBoolean(in[i+1]));
@@ -252,6 +285,8 @@ public class Perintah {
                     boxes(Integer.parseInt(in[1]));
             else if (in[0].equalsIgnoreCase("sierpinski"))
                     sierpinski(Integer.parseInt(in[1]));
+            else if (in[0].equalsIgnoreCase("Daun"))
+                    DaunMenjari(Integer.parseInt(in[1]));
             else if (in[0].equalsIgnoreCase("persegi")){
                     canvas.repaint();
                     return "Perintah kekurangan argumen";
@@ -427,6 +462,41 @@ public class Perintah {
             sierpinskiRekursif(ukuran/2);               //rekursif atas
         }
     }
+
+    /**
+     * Method ini untuk kura-kura menggambar daun
+     * @param ukuran parameter untuk panjang setiap cabang
+     */
+    public void DaunMenjari(int ukuran){
+        kurakuraku.reset();
+        kurakuraku.rotasi(-90);
+        kurakuraku.setJejak(false);
+        kurakuraku.mundur(80);
+        DaunMenjariRekursif(ukuran);
+    }
+
+    /**
+     * Method ini untuk implementasi rekursif membuat daun
+     * @param ukuran  parameter untuk panjang setiap cabang
+     */
+    public void DaunMenjariRekursif(int ukuran){
+        if (ukuran>2){
+            kurakuraku.setJejak(true);
+            kurakuraku.maju(ukuran); 
+            Dimension posAwal = kurakuraku.getPosition();                       
+            kurakuraku.rotasi(-120);
+            double arah = kurakuraku.getArah();
+            double sudut = arah;
+            for(int i=0;i<5;i++){  
+                DaunMenjariRekursif(ukuran/3);
+                kurakuraku.setPosition(posAwal);
+                kurakuraku.setArah(arah);                
+                sudut+=60;
+                kurakuraku.rotasi(sudut);   
+            }
+        }     
+    }
+
 
     /**
      * Method ini untuk kura-kura menggambar pohon
