@@ -332,13 +332,17 @@ public class Perintah {
      * Method ini untuk kura-kura menggambar segitiga
      * @param ukuran parameter ukuran segitiga yang diinginkan
      */
-    public void buatSegitiga(int ukuran){
+    public Dimension buatSegitiga(int ukuran){
         // TODO: Lengkapi isi method ini agar kura-kura bisa membuat segitiga sama sisi
         kurakuraku.maju(ukuran);
         kurakuraku.rotasi(-120);
-        kurakuraku.maju(ukuran);
+        kurakuraku.maju(ukuran/2);
+        Dimension posisiAtas = kurakuraku.getPosition();
+        kurakuraku.maju(ukuran/2);
         kurakuraku.rotasi(-120);
-        kurakuraku.maju(ukuran);        
+        kurakuraku.maju(ukuran);   
+        
+        return posisiAtas;
     }        
     
     /**
@@ -403,12 +407,15 @@ public class Perintah {
             kurakuraku.maju(ukuran);
             Dimension posisiAwal = kurakuraku.getPosition();
             kurakuraku.rotasi(-60);
-            buatSegitiga(ukuran);
+            Dimension posisiAtas = buatSegitiga(ukuran);
             kurakuraku.rotasi(-60);
             kurakuraku.setPosition(posisiAwal);
             kurakuraku.rotasi(-180);
             kurakuraku.maju(ukuran/2);
             kurakuraku.rotasi(120);
+            buatSegitiga(ukuran/2);
+            kurakuraku.setPosition(posisiAtas);
+            kurakuraku.rotasi(-120);
             buatSegitiga(ukuran/2);
             kurakuraku.setPosition(posisiAwal);
             kurakuraku.rotasi(-60);
