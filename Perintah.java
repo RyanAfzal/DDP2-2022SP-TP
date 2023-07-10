@@ -336,9 +336,8 @@ public class Perintah {
         // TODO: Lengkapi isi method ini agar kura-kura bisa membuat segitiga sama sisi
         kurakuraku.maju(ukuran);
         kurakuraku.rotasi(-120);
-        kurakuraku.maju(ukuran/2);
+        kurakuraku.maju(ukuran);
         Dimension posisiAtas = kurakuraku.getPosition();
-        kurakuraku.maju(ukuran/2);
         kurakuraku.rotasi(-120);
         kurakuraku.maju(ukuran);   
         
@@ -415,7 +414,9 @@ public class Perintah {
             kurakuraku.rotasi(120);
             buatSegitiga(ukuran/2);
             kurakuraku.setPosition(posisiAtas);
-            kurakuraku.rotasi(-120);
+            kurakuraku.rotasi(-60);
+            kurakuraku.maju(ukuran/2);
+            kurakuraku.rotasi(-60);
             buatSegitiga(ukuran/2);
             kurakuraku.setPosition(posisiAwal);
             kurakuraku.rotasi(-60);
