@@ -395,32 +395,36 @@ public class Perintah {
         }
     }
     
+    /**
+     * Method ini untuk kura-kura menggambar segitiga sierpinski
+     * @param ukuran parameter ukuran sisi segitiga paling luar
+     */
     public void sierpinski(int ukuran){
         buatSegitiga(ukuran);
         kurakuraku.rotasi(-120);
+        kurakuraku.maju(ukuran/2);
         sierpinskiRekursif(ukuran/2);
     }
 
+    /**
+     * Method ini implementasi rekursif sierpinski
+     * @param ukuran
+     */
     public void sierpinskiRekursif (int ukuran){
         if (ukuran > 2){
-            kurakuraku.maju(ukuran);
             Dimension posisiAwal = kurakuraku.getPosition();
             kurakuraku.rotasi(-60);
-            Dimension posisiAtas = buatSegitiga(ukuran);
+            Dimension posisiAtasSegitigaTerbalik = buatSegitiga(ukuran);
             kurakuraku.rotasi(-60);
             kurakuraku.setPosition(posisiAwal);
-            kurakuraku.rotasi(-180);
             kurakuraku.maju(ukuran/2);
-            kurakuraku.rotasi(120);
-            buatSegitiga(ukuran/2);
-            kurakuraku.setPosition(posisiAtas);
-            kurakuraku.rotasi(-60);
-            kurakuraku.maju(ukuran/2);
-            kurakuraku.rotasi(-60);
-            buatSegitiga(ukuran/2);
+            sierpinskiRekursif(ukuran/2);               //rekursif kanan
             kurakuraku.setPosition(posisiAwal);
-            kurakuraku.rotasi(-60);
-            sierpinskiRekursif(ukuran/2);
+            kurakuraku.mundur(ukuran/2);
+            sierpinskiRekursif(ukuran/2);               //rekursif kiri
+            kurakuraku.setPosition(posisiAtasSegitigaTerbalik);
+            kurakuraku.maju(ukuran/2);
+            sierpinskiRekursif(ukuran/2);               //rekursif atas
         }
     }
 
@@ -438,6 +442,10 @@ public class Perintah {
         kurakuraku.reset();
     }
     
+    /**
+     * Method ini untuk implementasi rekursif
+     * 
+     */
     private void buatPohon(int ukuran, int tinggi){
         if (ukuran>0){
             kurakuraku.setJejak(true);
